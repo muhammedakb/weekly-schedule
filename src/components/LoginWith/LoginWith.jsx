@@ -1,19 +1,23 @@
+import google from "../../images/google.svg";
+import github from "../../images/github.svg";
+import twitter from "../../images/twitter.svg";
+
 const LoginWith = ({ platform }) => {
   return (
     <>
       {platform === "google" && (
         <button className="login-with-btn" type="button">
-          <img src="" alt="google" />
+          <img src={google} alt="google" />
         </button>
       )}
       {platform === "github" && (
         <button className="login-with-btn" type="button">
-          <img src="" alt="github" />
+          <img src={github} alt="github" />
         </button>
       )}
       {platform === "twitter" && (
         <button className="login-with-btn" type="button">
-          <img src="" alt="twitter" />
+          <img src={twitter} alt="twitter" width={24} height={24} />
         </button>
       )}
     </>
