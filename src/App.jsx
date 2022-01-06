@@ -17,7 +17,7 @@ const App = () => {
           element={isLoggedIn ? <Schedule /> : <Navigate to={"/login"} />}
         />
         <Route path="/not-found" element={<NotFound />} />
-        <Route path="*" element={<Navigate to={"/not-found"} />} />
+        {/* <Route path="*" element={<Navigate to={"/not-found"} />} /> */}
       </Routes>
     </BrowserRouter>
   );
