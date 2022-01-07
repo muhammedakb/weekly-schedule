@@ -1,17 +1,11 @@
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+import {
+  onAuthStateChanged,
+  sendSignInLinkToEmail,
+  signInWithEmailLink,
+  signOut,
+} from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-
-// Initialize firebase
-firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FB_API,
-  authDomain: process.env.REACT_APP_FB_DOMAIN,
-  projectId: process.env.REACT_APP_FB_PROJECT,
-  storageBucket: process.env.REACT_APP_FB_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FB_SENDER,
-  appId: process.env.REACT_APP_FB_APP,
-  measurementId: process.env.REACT_APP_FB_MEASUREMENT,
-});
+import { auth } from "../firebase-config";
 
 const AuthContext = createContext();
 
@@ -26,35 +20,33 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(true);
 
-  const sendSignInLinkToEmail = (email) => {
-    return firebase
-      .auth()
-      .sendSignInLinkToEmail(email, {
-        url: "http://localhost:3000/confirm",
-        handleCodeInApp: true,
+  const login = async (email) => {
+    return await sendSignInLinkToEmail(auth, email, {
+      url: "http://localhost:3000/confirm",
+      handleCodeInApp: true,
+    })
+      .then(() => {
+        // TODO: localStorage operations
+        localStorage.setItem("emailForSignIn", email);
+        return true;
       })
-      .then(() => {
-        return true;
+      .catch((error) => {
+        console.log(error.code);
+        console.log(error.message);
       });
   };
 
-  const signInWithEmailLink = (email, code) => {
-    return firebase
-      .auth()
-      .signInWithEmailLink(email, code)
-      .then((result) => {
-        setUser(result.user);
-        return true;
-      });
+  const loginLink = async (email, code) => {
+    return await signInWithEmailLink(auth, email, code).then((result) => {
+      setUser(result.user);
+      return true;
+    });
   };
 
-  const logout = () => {
-    return firebase
-      .auth()
-      .signOut()
-      .then(() => {
-        setUser(null);
-      });
+  const logout = async () => {
+    return await signOut(auth).then(() => {
+      setUser(null);
+    });
   };
 
   // Subscribe to user on mount
@@ -62,7 +54,7 @@ export const AuthProvider = ({ children }) => {
   // ... component that utilizes this hook to re-render with the...
   // ... latest auth object
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setIsAuth(false);
     });
@@ -73,8 +65,8 @@ export const AuthProvider = ({ children }) => {
   const values = {
     user,
     isAuth,
-    sendSignInLinkToEmail,
-    signInWithEmailLink,
+    login,
+    loginLink,
     logout,
   };
 

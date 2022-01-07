@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 const ConfirmForm = () => {
@@ -10,15 +10,13 @@ const ConfirmForm = () => {
     formState: { errors },
   } = useForm();
 
-  const { signInWithEmailLink } = useAuth();
+  const { loginLink } = useAuth();
 
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log("LOCATION", location);
-  console.log("LOCATION SEARCH", location.search);
+
   const onSubmit = async (data) => {
     try {
-      await signInWithEmailLink(data.email, location.search);
+      await loginLink(data.email, window.location.href);
       navigate("/weekly-schedule");
     } catch (error) {
       setError("email", {

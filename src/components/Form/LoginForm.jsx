@@ -1,5 +1,3 @@
-// import { useRef, useState } from "react";
-// import { Link } from "react-router-dom";
 import LoginWith from "../LoginWith/LoginWith";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/useAuth";
@@ -7,10 +5,6 @@ import { useAuth } from "../../hooks/useAuth";
 const platforms = ["google", "github", "twitter"];
 
 const LoginForm = () => {
-  // const [inputType, setInputType] = useState("password");
-  // const changeInputType = () =>
-  //   inputType === "password" ? setInputType("text") : setInputType("password");
-
   const {
     handleSubmit,
     register,
@@ -19,11 +13,11 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm();
 
-  const { sendSignInLinkToEmail } = useAuth();
+  const { login } = useAuth();
 
   const onSubmit = async (data) => {
     try {
-      await sendSignInLinkToEmail(data.email);
+      await login(data.email);
     } catch (error) {
       setError("email", {
         type: "manual",
@@ -31,8 +25,6 @@ const LoginForm = () => {
       });
     }
   };
-
-  // const myRef = useRef(register());
 
   return (
     <div className="login-form">
@@ -42,24 +34,11 @@ const LoginForm = () => {
           <label htmlFor="email">Email</label>
           <input
             type="email"
-            // name="email"
             id="email"
             {...register("email", { required: true })}
-            // ref={myRef}
             placeholder="username@gmail.com"
           />
         </div>
-        {/* <div className="login-form-input">
-          <label htmlFor="password">Password</label>
-          <input
-            type={inputType}
-            name="password"
-            id="password"
-            placeholder="Password"
-          />
-          <span className="login-form-eye" onClick={changeInputType}></span>
-        </div> */}
-        {/* <p className="login-form-forgot">Forgot Password?</p> */}
 
         <button className="login-form-btn" type="submit">
           Giriş yap
@@ -72,10 +51,6 @@ const LoginForm = () => {
         ))}
       </div>
 
-      {/* <div className="login-form-text">
-        Don't have an account yet?{" "}
-        <Link to={"/register"}>Register for free</Link>
-      </div> */}
       {errors.email && (
         <div className="login-form-text error">
           {errors.email?.message
