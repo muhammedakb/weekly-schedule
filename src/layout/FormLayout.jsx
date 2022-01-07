@@ -1,19 +1,20 @@
-import LoginForm from "../../components/Form/LoginForm";
-import blue from "../../images/blue-1.svg";
-import blue2 from "../../images/blue-2.svg";
-import blue3 from "../../images/blue-3.svg";
-import blue4 from "../../images/blue-4.svg";
-import blue5 from "../../images/blue-5.svg";
-import blue6 from "../../images/blue-6.svg";
-import green from "../../images/green-1.svg";
-import green2 from "../../images/green-2.svg";
-import red from "../../images/red-1.svg";
-import red2 from "../../images/red-2.svg";
+// import LoginForm from "../components/Form/LoginForm";
+import blue from "../images/blue-1.svg";
+import blue2 from "../images/blue-2.svg";
+import blue3 from "../images/blue-3.svg";
+import blue4 from "../images/blue-4.svg";
+import blue5 from "../images/blue-5.svg";
+import blue6 from "../images/blue-6.svg";
+import green from "../images/green-1.svg";
+import green2 from "../images/green-2.svg";
+import red from "../images/red-1.svg";
+import red2 from "../images/red-2.svg";
 
-const Login = () => {
+const FormLayout = ({ children }) => {
   return (
     <div className="login">
-      <LoginForm />
+      {/* HOC */}
+      {children}
       <img src={blue} alt="-" className="login-blue" />
       <img src={blue2} alt="-" className="login-blue2" />
       <img src={blue3} alt="-" className="login-blue3" />
@@ -28,4 +29,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default FormLayout;

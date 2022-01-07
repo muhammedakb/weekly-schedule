@@ -36,7 +36,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-form">
-      <h3 className="login-form-title">Login</h3>
+      <h3 className="login-form-title">Giriş</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="login-form-input">
           <label htmlFor="email">Email</label>
@@ -62,10 +62,10 @@ const LoginForm = () => {
         {/* <p className="login-form-forgot">Forgot Password?</p> */}
 
         <button className="login-form-btn" type="submit">
-          Sign in
+          Giriş yap
         </button>
       </form>
-      <p className="login-form-text">or continue with</p>
+      <p className="login-form-text">veya devam et</p>
       <div className="login-form-withbtn">
         {platforms.map((platform, index) => (
           <LoginWith platform={platform} key={index} />
