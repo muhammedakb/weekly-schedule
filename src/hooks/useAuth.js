@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
     })
       .then(() => {
         // TODO: localStorage operations
-        localStorage.setItem("emailForSignIn", email);
+        // localStorage.setItem("emailForSignIn", email);
         return true;
       })
       .catch((error) => {

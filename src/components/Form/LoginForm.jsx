@@ -11,6 +11,7 @@ const LoginForm = () => {
     setError,
     formState,
     formState: { errors },
+    reset,
   } = useForm();
 
   const { login } = useAuth();
@@ -23,6 +24,8 @@ const LoginForm = () => {
         type: "manual",
         message: error.message,
       });
+    } finally {
+      reset({ email: "" });
     }
   };
 
