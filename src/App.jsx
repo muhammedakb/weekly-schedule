@@ -6,7 +6,7 @@ import FormLayout from "./layout/FormLayout";
 import NotFound from "./pages/not-found/NotFound";
 import Register from "./pages/register/Register";
 import Schedule from "./pages/schedule/Schedule";
-
+import Profile from "./pages/profile/Profile";
 const App = () => {
   const { user } = useAuth();
 
@@ -43,6 +43,10 @@ const App = () => {
         <Route
           path="/weekly-schedule"
           element={user ? <Schedule /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/profile"
+          element={user ? <Profile /> : <Navigate to={"/login"} />}
         />
         <Route path="/not-found" element={<NotFound />} />
         <Route path="*" element={<Navigate to={"/not-found"} />} />

@@ -25,8 +25,8 @@ const ConfirmForm = () => {
       });
       console.error(error);
     } finally {
-      console.log("DATA", data);
-      console.log("DATA EMAIL", data.email);
+      // console.log("DATA", data);
+      // console.log("DATA EMAIL", data.email);
     }
   };
 
