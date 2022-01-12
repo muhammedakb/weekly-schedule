@@ -3,26 +3,69 @@
   padding: 0 20%;
   background-color: #27272a;
   @include space-between;
-  text-transform: uppercase;
+  text-transform: capitalize;
+  font-family: "Chivo", sans-serif;
+
   > a,
   > p {
     height: 100%;
-    width: 125px;
+    // width: 125px;
     padding: 8px;
     transition: background-position-x 0.9s linear;
     text-align: center;
     color: #ecfeff;
     cursor: pointer;
     @include center-flex;
+    gap: 8px;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid #27272a;
     &:hover {
       background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEi%0D%0AIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhs%0D%0AaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0%0D%0AaD0iMzkwcHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDM5MCA1MCIgZW5hYmxlLWJhY2tn%0D%0Acm91bmQ9Im5ldyAwIDAgMzkwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggZmlsbD0i%0D%0Abm9uZSIgc3Ryb2tlPSIjZDk0ZjVjIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGlt%0D%0AaXQ9IjEwIiBkPSJNMCw0Ny41ODVjMCwwLDk3LjUsMCwxMzAsMAoJYzEzLjc1LDAsMjguNzQtMzgu%0D%0ANzc4LDQ2LjE2OC0xOS40MTZDMTkyLjY2OSw0Ni41LDI0My42MDMsNDcuNTg1LDI2MCw0Ny41ODVj%0D%0AMzEuODIxLDAsMTMwLDAsMTMwLDAiLz4KPC9zdmc+Cg==");
       animation: line 1.5s;
       color: #d94f5c;
+    }
+    &.active {
+      color: #d94f5c;
+      border-bottom: 3px solid #d94f5c;
+    }
+    span {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      &.home-icon {
+        background: url("../../images/home_white_24dp.svg");
+        &.active {
+          background: url("../../images/home_active_24dp.svg");
+        }
+      }
+      &.profile-icon {
+        background: url("../../images/account_circle_white_24dp.svg");
+        &.active {
+          background: url("../../images/account_circle_active_24dp.svg");
+        }
+      }
+      &.logout-icon {
+        background: url("../../images/logout_white_24dp.svg");
+        &.active {
+          background: url("../../images/logout_active_24dp.svg");
+        }
+      }
     }
   }
 }
 @keyframes line {
   0% {
     background-position-x: 390px;
+  }
+}
+
+@media screen and (min-width: 360px) and (max-width: 425px) {
+  #dashboard {
+    padding: 0;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 960px) {
+  #dashboard {
+    padding: 0 10%;
   }
 }
