@@ -7,6 +7,7 @@ import NotFound from "./pages/not-found/NotFound";
 import Register from "./pages/register/Register";
 import Schedule from "./pages/schedule/Schedule";
 import Profile from "./pages/profile/Profile";
+import Dashboard from "./layout/Dashboard";
 const App = () => {
   const { user } = useAuth();
 
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      {user && <Dashboard />}
       <Routes>
         <Route path="/" element={<Navigate to={"/login"} />} />
         <Route
