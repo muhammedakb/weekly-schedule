@@ -1,6 +1,7 @@
 import LoginWith from "../LoginWith/LoginWith";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../hooks/useAuth";
+import MessageBox from "../Message-box/MessageBox";
 
 const platforms = ["google", "github", "twitter"];
 
@@ -55,17 +56,17 @@ const LoginForm = () => {
       </div>
 
       {errors.email && (
-        <div className="login-form-text error">
-          {errors.email?.message
-            ? errors.email.message
-            : "Hangi mail adresi ile giriş yapmak istiyorsunuz 🤔"}
-        </div>
+        <MessageBox
+          type={"error"}
+          message={errors.email?.message ? errors.email.message : null}
+        />
       )}
 
       {formState.isSubmitSuccessful && (
-        <div className="login-form-text success">
-          Girişi tamamlamak için e-postanızı kontrol edin 🥳
-        </div>
+        <MessageBox
+          type={"success"}
+          message={"Girişi tamamlamak için e-postanızı kontrol edin 🥳"}
+        />
       )}
     </div>
   );

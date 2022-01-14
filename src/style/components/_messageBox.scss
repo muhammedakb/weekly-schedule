@@ -1,0 +1,49 @@
+#message-box {
+  width: 90%;
+  margin-left: 5%;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  margin-top: 32px;
+  line-height: 16px;
+
+  .error {
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ff0f0f;
+    font-size: 15px;
+    @include center-flex;
+    animation: info 1s 1s both infinite;
+  }
+  .success {
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #42ba96;
+    font-size: 16px;
+    @include center-flex;
+    animation: info 1s 1s both infinite;
+  }
+}
+
+@keyframes info {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(1.02);
+  }
+  20% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1);
+  }
+  90% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

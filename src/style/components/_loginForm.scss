@@ -7,7 +7,7 @@
   backdrop-filter: blur(25px);
   border-radius: 40px;
   z-index: 1;
-  font-family: 'Chivo', sans-serif;
+  font-family: "Chivo", sans-serif;
   &-title {
     font-size: 38px;
     color: #fff;
@@ -71,63 +71,15 @@
     }
   }
   &-text {
-    width: 90%;
-    margin-left: 5%;
     font-size: 14px;
     color: #fff;
     text-align: center;
     margin-top: 32px;
     line-height: 16px;
-    border-radius: 5px;
-    // a {
-    //   font-weight: 600;
-    //   color: #fff;
-    //   margin-left: 5px;
-    //   &:hover {
-    //     text-decoration: underline;
-    //   }
-    // }
-    &.error {
-      height: auto;
-      padding: 10px;
-      background-color: #ff0f0f;
-      font-size: 15px;
-      @include center-flex;
-      animation: info 1s 1s both infinite;
-    }
-    &.success {
-      height: auto;
-      padding: 10px;
-      background-color: #42ba96;
-      font-size: 16px;
-      @include center-flex;
-      animation: info 1s 1s both infinite;
-    }
   }
   &-withbtn {
     display: flex;
     gap: 25px;
     margin-top: 29px;
-  }
-}
-
-@keyframes info {
-  0% {
-    transform: scale(1);
-  }
-  10% {
-    transform: scale(1.02);
-  }
-  20% {
-    transform: scale(1);
-  }
-  80% {
-    transform: scale(1);
-  }
-  90% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
   }
 }

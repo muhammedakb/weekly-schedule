@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import MessageBox from "../Message-box/MessageBox";
 
 const ConfirmForm = () => {
   const {
@@ -26,7 +27,7 @@ const ConfirmForm = () => {
       console.error(error);
     } finally {
       // console.log("DATA", data);
-      // console.log("DATA EMAIL", data.email);
+      console.log("DATA EMAIL", data.email);
     }
   };
 
@@ -50,11 +51,10 @@ const ConfirmForm = () => {
       </form>
 
       {errors.email && (
-        <div className="login-form-text error">
-          {errors.email?.message
-            ? errors.email.message
-            : "Hangi mail adresi ile giriş yapmak istiyorsunuz 🤔"}
-        </div>
+        <MessageBox
+          type={"error"}
+          message={errors.email?.message ? errors.email.message : null}
+        />
       )}
     </div>
   );

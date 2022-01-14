@@ -4,7 +4,6 @@ import LoginForm from "./components/Form/LoginForm";
 import { useAuth } from "./hooks/useAuth";
 import FormLayout from "./layout/FormLayout";
 import NotFound from "./pages/not-found/NotFound";
-import Register from "./pages/register/Register";
 import Schedule from "./pages/schedule/Schedule";
 import Profile from "./pages/profile/Profile";
 import Dashboard from "./layout/Dashboard";
@@ -32,12 +31,15 @@ const App = () => {
         <Route
           path="/login"
           element={
-            <FormLayout>
-              <LoginForm />
-            </FormLayout>
+            user ? (
+              <Navigate to={"/weekly-schedule"} />
+            ) : (
+              <FormLayout>
+                <LoginForm />
+              </FormLayout>
+            )
           }
         />
-        <Route path="/register" element={<Register />} />
         <Route
           path="/confirm"
           element={privateConfirmRoute(window.location.search)}

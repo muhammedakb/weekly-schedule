@@ -3,6 +3,7 @@ import {
   sendSignInLinkToEmail,
   signInWithEmailLink,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase-config";
@@ -49,6 +50,18 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const updateUserInfos = async (displayName, photoUrl) => {
+    return await updateProfile(auth.currentUser, {
+      displayName: displayName,
+      photoURL: photoUrl,
+    })
+      .then(() => true)
+      .catch((error) => {
+        console.log(error.code);
+        console.log(error.message);
+      });
+  };
+
   // Subscribe to user on mount
   // Because this sets state in the callback it will cause any...
   // ... component that utilizes this hook to re-render with the...
@@ -68,6 +81,7 @@ export const AuthProvider = ({ children }) => {
     login,
     loginLink,
     logout,
+    updateUserInfos
   };
 
   return (
