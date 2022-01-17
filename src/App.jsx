@@ -13,7 +13,7 @@ const App = () => {
   const privateConfirmRoute = (link) => {
     if (link.includes("?apiKey=") && link.length > 90 && !user) {
       return (
-        <FormLayout>
+        <FormLayout background={true}>
           <ConfirmForm />
         </FormLayout>
       );
@@ -34,7 +34,7 @@ const App = () => {
             user ? (
               <Navigate to={"/weekly-schedule"} />
             ) : (
-              <FormLayout>
+              <FormLayout background={true}>
                 <LoginForm />
               </FormLayout>
             )

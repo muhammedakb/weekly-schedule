@@ -10,21 +10,25 @@ import green2 from "../images/green-2.svg";
 import red from "../images/red-1.svg";
 import red2 from "../images/red-2.svg";
 
-const FormLayout = ({ children }) => {
+const FormLayout = ({ children, background }) => {
   return (
     <div className="login">
       {/* HOC */}
       {children}
-      <img src={blue} alt="-" className="login-blue" />
-      <img src={blue2} alt="-" className="login-blue2" />
-      <img src={blue3} alt="-" className="login-blue3" />
-      <img src={blue4} alt="-" className="login-blue4" />
-      <img src={blue5} alt="-" className="login-blue5" />
-      <img src={blue6} alt="-" className="login-blue6" />
-      <img src={green} alt="-" className="login-green" />
-      <img src={green2} alt="-" className="login-green2" />
-      <img src={red} alt="-" className="login-red" />
-      <img src={red2} alt="-" className="login-red2" />
+      {background && (
+        <>
+          <img src={blue} alt="-" className="login-blue" />
+          <img src={blue2} alt="-" className="login-blue2" />
+          <img src={blue3} alt="-" className="login-blue3" />
+          <img src={blue4} alt="-" className="login-blue4" />
+          <img src={blue5} alt="-" className="login-blue5" />
+          <img src={blue6} alt="-" className="login-blue6" />
+          <img src={green} alt="-" className="login-green" />
+          <img src={green2} alt="-" className="login-green2" />
+          <img src={red} alt="-" className="login-red" />
+          <img src={red2} alt="-" className="login-red2" />
+        </>
+      )}
     </div>
   );
 };
