@@ -83,3 +83,9 @@
     margin-top: 29px;
   }
 }
+
+@media screen and (min-width: 360px) and (max-width: 520px) {
+  .login-form {
+    width: 360px;
+  }
+}

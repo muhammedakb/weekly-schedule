@@ -4,6 +4,12 @@ import {
   signInWithEmailLink,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
+  GithubAuthProvider,
+  // signInWithCredential,
+  // linkWithCredential,
+  // OAuthProvider,
 } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase-config";
@@ -20,6 +26,15 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(true);
+
+  // Auth providers
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
+  // TODO
+  /*const authMergeAccounts = () => {
+    const repo = new MyUserDataRepo();
+  }*/
 
   const login = async (email) => {
     return await sendSignInLinkToEmail(auth, email, {
@@ -62,6 +77,60 @@ export const AuthProvider = ({ children }) => {
       });
   };
 
+  const loginWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        console.log(token);
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+        setUser(user);
+        return true;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+
+        const errors = [errorCode, errorMessage, email, credential];
+
+        console.error(errors);
+      });
+  };
+
+  const loginWithGithub = () => {
+    return signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        console.log(token);
+        // The signed-in user info.
+        const user = result.user;
+        // ...
+        setUser(user);
+        return true;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.email;
+        const credential = GithubAuthProvider.credentialFromError(error);
+
+        const errors = [errorCode, errorMessage, email, credential];
+
+        console.error(errors);
+      });
+  };
+
+  /*const loginWithTwitter = () => {
+    // TODO
+  }*/
+
   // Subscribe to user on mount
   // Because this sets state in the callback it will cause any...
   // ... component that utilizes this hook to re-render with the...
@@ -81,7 +150,9 @@ export const AuthProvider = ({ children }) => {
     login,
     loginLink,
     logout,
-    updateUserInfos
+    updateUserInfos,
+    loginWithGoogle,
+    loginWithGithub,
   };
 
   return (
