@@ -1,4 +1,5 @@
 // import LoginForm from "../components/Form/LoginForm";
+import { useLocation } from "react-router-dom";
 import blue from "../images/blue-1.svg";
 import blue2 from "../images/blue-2.svg";
 import blue3 from "../images/blue-3.svg";
@@ -11,8 +12,23 @@ import red from "../images/red-1.svg";
 import red2 from "../images/red-2.svg";
 
 const FormLayout = ({ children, background }) => {
+  // location handle
+  const location = useLocation();
+  const { pathname } = location;
+  const splitLocation = pathname.split("/");
+
+  // canım böyle yapmak istedi, fazla sorgulamayın :d
+  const handleHeight = () =>
+    splitLocation[1] === "login" || splitLocation[1] === "confirm"
+      ? "100vh"
+      : "calc(100vh - 48px)";
+
+  const style = {
+    height: handleHeight(),
+  };
+
   return (
-    <div className="login">
+    <div className="login" style={style}>
       {/* HOC */}
       {children}
       {background && (
