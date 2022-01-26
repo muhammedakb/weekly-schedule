@@ -26,7 +26,7 @@ const LoginWith = ({ platform }) => {
         </button>
       )}
       {platform === "twitter" && (
-        <button className="login-with-btn" type="button">
+        <button className="login-with-btn" type="button" disabled>
           <img src={twitter} alt="twitter" width={24} height={24} />
         </button>
       )}
