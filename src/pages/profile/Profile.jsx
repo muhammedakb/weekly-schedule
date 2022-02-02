@@ -34,8 +34,6 @@ const Profile = () => {
     setDisable(false);
   };
 
-  // console.log(user);
-
   const onSubmit = async (data) => {
     try {
       await updateUserInfos(data.displayName, data.photoURL);
@@ -46,7 +44,6 @@ const Profile = () => {
       });
     }
   };
-  // console.log(data);
 
   return (
     <FormLayout background={false}>
