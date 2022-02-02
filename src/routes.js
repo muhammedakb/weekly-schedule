@@ -1,30 +1,61 @@
 import { Navigate } from "react-router-dom";
-import Login from "./pages/login/Login";
+import ConfirmForm from "./components/Form/ConfirmForm";
+import LoginForm from "./components/Form/LoginForm";
+import FormLayout from "./layout/FormLayout";
 import NotFound from "./pages/not-found/NotFound";
 import Profile from "./pages/profile/Profile";
-import Register from "./pages/register/Register";
 import Schedule from "./pages/schedule/Schedule";
 
-// TODO: Revize edilecek ve route'lar buradan yönetilecek
-const routes = (isLoggedIn) => [
-  {
-    path: "/app",
-    element: isLoggedIn ? <Schedule /> : <Navigate to={"/login"} />,
-    children: [
-      { path: "profile", element: <Profile /> },
-      { path: "weekly-schedule", element: <Schedule /> },
-      { path: "*", element: <Navigate to={"/not-found"} /> },
-    ],
-  },
+const privateConfirmRoute = (link, user) => {
+  if (link.includes("?apiKey=") && link.length > 90 && !user) {
+    return (
+      <FormLayout background={true}>
+        <ConfirmForm />
+      </FormLayout>
+    );
+  } else if (user) {
+    return <Navigate to={"/weekly-schedule"} />;
+  }
+  return <Navigate to={"/login"} />;
+};
+
+const checkUser = (user, protectedView, redirect) =>
+  user ? protectedView : redirect;
+
+const routes = (user) => [
   {
     path: "/",
     element: <Navigate to={"/login"} />,
-    children: [
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Register /> },
-      { path: "not-found", element: <NotFound /> },
-      { path: "*", element: <Navigate to={"/not-found"} /> },
-    ],
+  },
+  {
+    path: "/login",
+    element: checkUser(
+      user,
+      <Navigate to={"/weekly-schedule"} />,
+      <FormLayout background={true}>
+        <LoginForm />
+      </FormLayout>
+    ),
+  },
+  {
+    path: "/confirm",
+    element: privateConfirmRoute(window.location.search, user),
+  },
+  {
+    path: "/weekly-schedule",
+    element: checkUser(user, <Schedule />, <Navigate to={"/login"} />),
+  },
+  {
+    path: "/profile",
+    element: checkUser(user, <Profile />, <Navigate to={"/login"} />),
+  },
+  {
+    path: "/not-found",
+    element: <NotFound />,
+  },
+  {
+    path: "*",
+    element: <Navigate to={"/not-found"} />,
   },
 ];
 
