@@ -9,31 +9,35 @@ const Dashboard = () => {
   const { pathname } = location;
   const splitLocation = pathname.split("/");
 
+  const navItems = [
+    {
+      url: "/weekly-schedule",
+      linkClass: splitLocation[1] === "weekly-schedule" ? "active" : "",
+      iconClass: `home-icon ${
+        splitLocation[1] === "weekly-schedule" ? "active" : ""
+      }`,
+      text: "Ana Sayfa",
+    },
+    {
+      url: "/profile",
+      linkClass: splitLocation[1] === "profile" ? "active" : "",
+      iconClass: `profile-icon ${
+        splitLocation[1] === "profile" ? "active" : ""
+      }`,
+      text: "Profil",
+    },
+  ];
+
   return (
     <nav id="dashboard">
-      <Link
-        to={"/weekly-schedule"}
-        className={splitLocation[1] === "weekly-schedule" ? "active" : ""}
-      >
-        <span
-          className={`home-icon ${
-            splitLocation[1] === "weekly-schedule" ? "active" : ""
-          }`}
-        ></span>
-        Ana Sayfa
-      </Link>
+      {navItems.map(({ url, linkClass, iconClass, text }, index) => (
+        <Link to={url} className={linkClass} key={index}>
+          <span className={iconClass}></span>
+          {text}
+        </Link>
+      ))}
+
       {/* <Link to={""}>Sınıflar</Link> */}
-      <Link
-        to={"/profile"}
-        className={splitLocation[1] === "profile" ? "active" : ""}
-      >
-        <span
-          className={`profile-icon ${
-            splitLocation[1] === "profile" ? "active" : ""
-          }`}
-        ></span>
-        Profil
-      </Link>
 
       <p className="logout" onClick={logout}>
         Çıkış yap
