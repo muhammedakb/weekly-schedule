@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import profileIcon from "../images/account_circle_white_24dp.svg";
+import LayoutItems from "../components/Schedule/LayoutItems";
 
 const elements = [
   {
@@ -40,16 +39,7 @@ const ScheduleLayout = () => {
       </header>
       <ul className="schedule-layout-links">
         {elements.map(({ icon, text, path }, index) => (
-          <Link to={path} key={index}>
-            <li className="schedule-layout-links-item">
-              <img
-                src={icon ?? profileIcon}
-                alt=""
-                className="schedule-layout-links-icon"
-              />
-              <p className="schedule-layout-links-link">{text}</p>
-            </li>
-          </Link>
+          <LayoutItems path={path} icon={icon} text={text} key={index} />
         ))}
       </ul>
     </section>
