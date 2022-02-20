@@ -1,31 +1,30 @@
-import { Link } from "react-router-dom";
-import profileIcon from "../images/account_circle_white_24dp.svg";
+import LayoutItems from "../components/Schedule/LayoutItems";
 
 const elements = [
   {
     icon: null,
     text: "Programlarım",
-    path: "/schedules",
+    path: null,
   },
   {
     icon: null,
     text: "Yeni Program",
-    path: "/add-new",
+    path: "add-new",
   },
   {
     icon: null,
     text: "Program Analizi",
-    path: "/analysis",
+    path: "analysis",
   },
   {
     icon: null,
     text: "Ayarlar",
-    path: "/settings",
+    path: "settings",
   },
   {
     icon: null,
     text: "Sorun/Öneri Bildir",
-    path: "/report",
+    path: "report",
   },
 ];
 
@@ -40,16 +39,7 @@ const ScheduleLayout = () => {
       </header>
       <ul className="schedule-layout-links">
         {elements.map(({ icon, text, path }, index) => (
-          <Link to={path} key={index}>
-            <li className="schedule-layout-links-item">
-              <img
-                src={icon ?? profileIcon}
-                alt=""
-                className="schedule-layout-links-icon"
-              />
-              <p className="schedule-layout-links-link">{text}</p>
-            </li>
-          </Link>
+          <LayoutItems path={path} icon={icon} text={text} key={index} />
         ))}
       </ul>
     </section>

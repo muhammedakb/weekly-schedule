@@ -1,10 +1,12 @@
 .schedule-layout {
   font-family: "Chivo", sans-serif;
   width: 240px;
-  height: calc(100vh - 48px);
+  height: calc(100vh - 248px);
+  margin: 100px 0;
   padding: 2rem 0;
   background-color: #27272a;
   color: #fff;
+  border-radius: 0 15px 15px 0;
   &-header {
     height: 60px;
     margin: 0 1rem;
