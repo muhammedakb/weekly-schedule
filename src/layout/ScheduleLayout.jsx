@@ -4,27 +4,27 @@ const elements = [
   {
     icon: null,
     text: "Programlarım",
-    path: "/schedules",
+    path: null,
   },
   {
     icon: null,
     text: "Yeni Program",
-    path: "/add-new",
+    path: "add-new",
   },
   {
     icon: null,
     text: "Program Analizi",
-    path: "/analysis",
+    path: "analysis",
   },
   {
     icon: null,
     text: "Ayarlar",
-    path: "/settings",
+    path: "settings",
   },
   {
     icon: null,
     text: "Sorun/Öneri Bildir",
-    path: "/report",
+    path: "report",
   },
 ];
 
