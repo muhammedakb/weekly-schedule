@@ -1,34 +1,49 @@
+import { useLocation } from "react-router-dom";
 import LayoutItems from "../components/Schedule/LayoutItems";
-
-const elements = [
-  {
-    icon: null,
-    text: "Programlarım",
-    path: null,
-  },
-  {
-    icon: null,
-    text: "Yeni Program",
-    path: "add-new",
-  },
-  {
-    icon: null,
-    text: "Program Analizi",
-    path: "analysis",
-  },
-  {
-    icon: null,
-    text: "Ayarlar",
-    path: "settings",
-  },
-  {
-    icon: null,
-    text: "Sorun/Öneri Bildir",
-    path: "report",
-  },
-];
+import programsIcon from "../images/calendar_view_week_white_24dp.svg";
+import newProgramIcon from "../images/add_circle_outline_white_24dp.svg";
+import analysisIcon from "../images/analytics_white_24dp.svg";
+import settingsIcon from "../images/settings_white_24dp.svg";
+import reportIcon from "../images/report_problem_white_24dp.svg";
 
 const ScheduleLayout = () => {
+  // active nav element
+  const location = useLocation();
+  const { pathname } = location;
+  const splitLocation = pathname.split("/");
+
+  const elements = [
+    {
+      icon: programsIcon,
+      className: splitLocation[2] === undefined ? "active" : "",
+      text: "Programlarım",
+      path: null,
+    },
+    {
+      icon: newProgramIcon,
+      className: splitLocation[2] === "add-new" ? "active" : "",
+      text: "Yeni Program",
+      path: "add-new",
+    },
+    {
+      icon: analysisIcon,
+      className: splitLocation[2] === "analysis" ? "active" : "",
+      text: "Program Analizi",
+      path: "analysis",
+    },
+    {
+      icon: settingsIcon,
+      className: splitLocation[2] === "settings" ? "active" : "",
+      text: "Ayarlar",
+      path: "settings",
+    },
+    {
+      icon: reportIcon,
+      className: splitLocation[2] === "report" ? "active" : "",
+      text: "Sorun/Öneri Bildir",
+      path: "report",
+    },
+  ];
   return (
     <section className="schedule-layout">
       <header className="schedule-layout-header">
@@ -38,8 +53,14 @@ const ScheduleLayout = () => {
         Weekly Schedule
       </header>
       <ul className="schedule-layout-links">
-        {elements.map(({ icon, text, path }, index) => (
-          <LayoutItems path={path} icon={icon} text={text} key={index} />
+        {elements.map(({ icon, className, text, path }, index) => (
+          <LayoutItems
+            path={path}
+            className={className}
+            icon={icon}
+            text={text}
+            key={index}
+          />
         ))}
       </ul>
     </section>

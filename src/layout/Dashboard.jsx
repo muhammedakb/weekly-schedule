@@ -36,9 +36,6 @@ const Dashboard = () => {
           {text}
         </Link>
       ))}
-
-      {/* <Link to={""}>Sınıflar</Link> */}
-
       <p className="logout" onClick={logout}>
         Çıkış yap
         <span className="logout-icon"></span>
