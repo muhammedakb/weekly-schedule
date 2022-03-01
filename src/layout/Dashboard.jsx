@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 const Dashboard = () => {
@@ -12,6 +12,7 @@ const Dashboard = () => {
   const navItems = [
     {
       url: "/weekly-schedule",
+      linkClass: splitLocation[1] === "weekly-schedule" ? "active" : "",
       iconClass: `home-icon ${
         splitLocation[1] === "weekly-schedule" ? "active" : ""
       }`,
@@ -19,6 +20,7 @@ const Dashboard = () => {
     },
     {
       url: "/profile",
+      linkClass: splitLocation[1] === "profile" ? "active" : "",
       iconClass: `profile-icon ${
         splitLocation[1] === "profile" ? "active" : ""
       }`,
@@ -28,15 +30,11 @@ const Dashboard = () => {
 
   return (
     <nav id="dashboard">
-      {navItems.map(({ url, iconClass, text }, index) => (
-        <NavLink
-          to={url}
-          className={({ isActive }) => (isActive ? "active" : undefined)}
-          key={index}
-        >
+      {navItems.map(({ url, linkClass, iconClass, text }, index) => (
+        <Link to={url} className={linkClass} key={index}>
           <span className={iconClass}></span>
           {text}
-        </NavLink>
+        </Link>
       ))}
       <p className="logout" onClick={logout}>
         Çıkış yap
