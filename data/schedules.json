@@ -1,0 +1,44 @@
+{
+  "schedules": [
+    {
+      "id": "1111111111",
+      "title": "Program 1",
+      "description": "2 aylık programım",
+      "startingDate": "",
+      "endDate": "",
+      "category": "yellow"
+    },
+    {
+      "id": "2222222222",
+      "title": "Program 2",
+      "description": "Deneme programım",
+      "startingDate": "",
+      "endDate": "",
+      "category": "green"
+    },
+    {
+      "id": "3333333333",
+      "title": "Program 3",
+      "description": "Yeni etkili programım",
+      "startingDate": "",
+      "endDate": "",
+      "category": "red"
+    },
+    {
+      "id": "4444444444",
+      "title": "Program 4",
+      "description": "Ne bilim ölçmedim",
+      "startingDate": "",
+      "endDate": "",
+      "category": "purple"
+    },
+    {
+      "id": "5555555555",
+      "title": "Program 5",
+      "description": "Spor programım",
+      "startingDate": "",
+      "endDate": "",
+      "category": "blue"
+    }
+  ]
+}

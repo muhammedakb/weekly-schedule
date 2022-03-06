@@ -1,6 +1,7 @@
 .schedule-layout {
   font-family: "Chivo", sans-serif;
-  width: 240px;
+  max-width: 240px;
+  width: 100%;
   // TODO: height
   height: calc(100vh - 248px);
   margin: 100px 0;

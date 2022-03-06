@@ -1,11 +1,18 @@
 import { Outlet } from "react-router-dom";
-
+import { useAuth } from "../hooks/useAuth";
+import { getName } from "../utils/user";
 const ScheduleContent = () => {
+  const { user } = useAuth();
+
   return (
-    <div>
-      <h1>Nested Routes</h1>
+    <section className="schedule-content">
+      <header>
+        <h1 className="schedule-content-title">
+          merhaba {getName(user.displayName)}
+        </h1>
+      </header>
       <Outlet />
-    </div>
+    </section>
   );
 };
 
