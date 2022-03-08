@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Schedules from "../../components/Schedule/Schedules";
 
 const Programs = () => {
   const [schedules, setSchedules] = useState([]);
@@ -27,18 +28,17 @@ const Programs = () => {
     return <div>Operation is failed...</div>;
   }
   return (
-    <main>
+    <main className="programs">
       {loading ? (
         <div>LOADİNG ...</div>
       ) : (
         schedules.map((schedule, index) => (
-          <div
+          <Schedules
             key={schedule.id ?? index}
-            style={{ border: `1px solid ${schedule.category}` }}
-          >
-            <h6>{schedule.title}</h6>
-            <p>{schedule.description}</p>
-          </div>
+            category={schedule.category}
+            title={schedule.title}
+            description={schedule.description}
+          />
         ))
       )}
     </main>
