@@ -7,6 +7,7 @@ import Profile from "./pages/profile/Profile";
 import NewProgram from "./pages/schedule/NewProgram";
 import ProgramAnalysis from "./pages/schedule/ProgramAnalysis";
 import Programs from "./pages/schedule/Programs";
+import Program from "./pages/schedule/Program";
 import Report from "./pages/schedule/Report";
 import Schedule from "./pages/schedule/Schedule";
 import Settings from "./pages/schedule/Settings";
@@ -26,7 +27,6 @@ const privateConfirmRoute = (link, user) => {
 
 const checkUser = (user, protectedView, redirect) =>
   user ? protectedView : redirect;
-
 
 const routes = (user) => [
   {
@@ -54,6 +54,10 @@ const routes = (user) => [
       {
         index: true,
         element: <Programs />,
+      },
+      {
+        path: ":user/:scheduleid/:scheduletitle",
+        element: <Program />,
       },
       {
         path: "add-new",

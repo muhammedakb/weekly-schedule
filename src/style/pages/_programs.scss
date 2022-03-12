@@ -1,6 +1,27 @@
 .programs {
+  height: 100%;
+  height: 1050px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
   gap: 2rem;
   row-gap: 4rem;
+  overflow-y: auto;
+  &::-webkit {
+    &-scrollbar {
+      width: 5px;
+      &-track {
+        box-shadow: inset 0 0 5px #e2e2e2;
+        border-radius: 10px;
+      }
+      &-thumb {
+        background-color: #27272a;
+        border-radius: 10px;
+        &:hover {
+          background-color: grey;
+        }
+      }
+    }
+  }
 }

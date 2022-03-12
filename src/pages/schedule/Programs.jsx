@@ -24,23 +24,25 @@ const Programs = () => {
     getSchedules();
   }, [setSchedules]);
 
-  console.log(schedules);
   if (error) {
     return <div>Operation is failed...</div>;
   }
-  
+
   return (
     <main className="programs">
-      {loading
-        ? <Loading />
-        : schedules.map((schedule, index) => (
-            <Schedules
-              key={schedule.id ?? index}
-              category={schedule.category}
-              title={schedule.title}
-              description={schedule.description}
-            />
-          ))}
+      {loading ? (
+        <Loading />
+      ) : (
+        schedules.map((schedule, index) => (
+          <Schedules
+            key={schedule.id ?? index}
+            id={schedule.id}
+            category={schedule.category}
+            title={schedule.title}
+            description={schedule.description}
+          />
+        ))
+      )}
     </main>
   );
 };
