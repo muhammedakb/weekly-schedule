@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
-import { getName } from "../utils/user";
+import { getName } from "../utils/userUtils";
 const ScheduleContent = () => {
   const { user } = useAuth();
 

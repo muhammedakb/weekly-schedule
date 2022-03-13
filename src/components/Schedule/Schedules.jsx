@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { slugify } from "../../utils/user";
+import { slugify } from "../../utils/userUtils";
 
 const Schedules = ({ id, category, title, description }) => {
   const { user } = useAuth();
