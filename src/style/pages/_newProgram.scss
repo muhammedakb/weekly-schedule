@@ -1,0 +1,53 @@
+.add-new-form {
+  @include flex-column;
+  width: 340px;
+  padding: 1rem;
+  margin: 0 auto;
+  background-color: #667eebd5;
+  border-radius: 5px;
+  row-gap: 1rem;
+  font-size: 18px;
+  label {
+    @include vertical-center;
+    gap: 1rem;
+  }
+  &-radio {
+    @include vertical-center;
+    gap: 10px;
+    font-size: 16px;
+  }
+  input[type="text"] {
+    height: 25px;
+    padding: 10px;
+    border-radius: 2px;
+  }
+  input[type="date"] {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  input[type="color"] {
+    width: 80px;
+    height: 25px;
+    padding: 2px;
+    border-radius: 2px;
+  }
+  input[type="submit"] {
+    width: 66%;
+    height: 35px;
+    margin-left: 17%;
+    margin-top: 1rem;
+    border-radius: 5px;
+    @include center-flex;
+    background-color: #27272a;
+    color: #e2e2e2;
+    text-transform: capitalize;
+    cursor: pointer;
+    &:hover {
+      background-color: #27272ac9;
+    }
+    &:disabled {
+      background-color: #535358;
+      cursor: not-allowed;
+    }
+  }
+}

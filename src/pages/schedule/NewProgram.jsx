@@ -32,15 +32,7 @@ const NewProgram = () => {
     }
   };
   return (
-    <form
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        background: "#000",
-        color: "#fff",
-      }}
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form className="add-new-form" onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="title">
         Başlık:
         <input
@@ -58,22 +50,27 @@ const NewProgram = () => {
         />
       </label>
       <label htmlFor="isendtime">
-        Süreli mi: Evet
-        <input
-          type="radio"
-          id="isendtime"
-          {...register("isendtime", { required: true })}
-          value={true}
-          onChange={() => setIsChecked(true)}
-        />
-        Hayır
-        <input
-          type="radio"
-          id="isendtime"
-          {...register("isendtime", { required: true })}
-          value={false}
-          onChange={() => setIsChecked(false)}
-        />
+        Süreli mi:
+        <div className="add-new-form-radio">
+          Evet
+          <input
+            type="radio"
+            id="isendtime"
+            {...register("isendtime", { required: true })}
+            value={true}
+            onChange={() => setIsChecked(true)}
+          />
+        </div>
+        <div className="add-new-form-radio">
+          Hayır
+          <input
+            type="radio"
+            id="isendtime"
+            {...register("isendtime", { required: true })}
+            value={false}
+            onChange={() => setIsChecked(false)}
+          />
+        </div>
       </label>
       {isChecked ? (
         <label htmlFor="endtime">
@@ -95,7 +92,11 @@ const NewProgram = () => {
           {...register("category", { required: true })}
         />
       </label>
-      <input type="submit" value="submit" disabled={!formState.isDirty} />
+      <input
+        type="submit"
+        value="yeni program oluştur"
+        disabled={!formState.isDirty}
+      />
     </form>
   );
 };
