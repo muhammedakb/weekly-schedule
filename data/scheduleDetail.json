@@ -3,7 +3,12 @@
     {
       "id": "v6vjjma5z3pfech9zxpk",
       "days": {
-        "monday": {},
+        "monday": {
+          "09-10": "ödev yap",
+          "10-11": "spor yap",
+          "11-12": "hiçbir şey yap",
+          "12-13": "ne bilim yap"
+        },
         "tuesday": {},
         "wednesday": {},
         "thursday": {},
