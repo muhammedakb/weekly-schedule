@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toastSucc } from "../../helpers/react-toast";
 import { getDate, dateCorrection } from "../../utils/dateUtils";
+import { capitalize } from "../../utils/stringUtils";
 import { makeid } from "../../utils/userUtils";
+
 const NewProgram = () => {
   const [isChecked, setIsChecked] = useState();
   const { register, handleSubmit, formState, reset } = useForm();
@@ -19,6 +22,19 @@ const NewProgram = () => {
         endDate: data.endtime ? dateCorrection(data.endtime) : "",
         category: data.category,
       });
+      await axios.post("http://localhost:8080/schedule", {
+        id: id,
+        days: {
+          monday: {},
+          tuesday: {},
+          wednesday: {},
+          thursday: {},
+          friday: {},
+          saturday: {},
+          sunday: {},
+        },
+      });
+      toastSucc(`${capitalize(data.title)} Başarıyla Oluşturuldu !`);
     } catch (error) {
       console.log("HATA", error);
     } finally {

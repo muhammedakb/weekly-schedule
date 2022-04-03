@@ -27,7 +27,6 @@ const Programs = () => {
   if (error) {
     return <div>Operation is failed...</div>;
   }
-
   return (
     <main className="programs">
       {loading ? (
