@@ -4,7 +4,10 @@
       "id": "v6vjjma5z3pfech9zxpk",
       "days": {
         "monday": {
-          "06-07": "ödev yap",
+          "06-07": [
+            { "minute": 30, "todo": "meditate" },
+            { "minute": 30, "todo": "coffee" }
+          ],
           "07-08": "ödev yap",
           "08-09": "ödev yap",
           "09-10": "ödev yap",
@@ -213,6 +216,18 @@
     },
     {
       "id": "fcio0l1h8ydfr8z8av09",
+      "days": {
+        "monday": {},
+        "tuesday": {},
+        "wednesday": {},
+        "thursday": {},
+        "friday": {},
+        "saturday": {},
+        "sunday": {}
+      }
+    },
+    {
+      "id": "pz2al62lxi1o65iksgx0",
       "days": {
         "monday": {},
         "tuesday": {},

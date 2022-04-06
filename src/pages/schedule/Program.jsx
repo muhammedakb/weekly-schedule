@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import ScheduleDay from "../../components/Schedule/ScheduleDay";
 import { toastError, toastSucc } from "../../helpers/react-toast";
 import { capitalize } from "../../utils/stringUtils";
 
@@ -49,6 +50,9 @@ const Program = () => {
         await axios.delete(
           `http://localhost:5000/schedules/${params.scheduleid}`
         );
+        await axios.delete(
+          `http://localhost:8080/schedule/${params.scheduleid}`
+        );
         toastSucc(`${capitalize(schedule.title)} Başarıyla Silindi !`);
         navigate("/weekly-schedule");
       } catch (error) {
@@ -59,7 +63,6 @@ const Program = () => {
   if (error) {
     return <div>Something went wrong...</div>;
   }
-  console.log(schedule);
   return (
     <div>
       <h1>Program burada</h1>
@@ -76,6 +79,7 @@ const Program = () => {
           <p>{schedule.title}</p>
         </>
       )}
+      <ScheduleDay day="monday" isEmpty={false} />
     </div>
   );
 };

@@ -3,7 +3,6 @@ import { useAuth } from "../hooks/useAuth";
 import { getName } from "../utils/userUtils";
 const ScheduleContent = () => {
   const { user } = useAuth();
-
   return (
     <section className="schedule-content">
       <header>
