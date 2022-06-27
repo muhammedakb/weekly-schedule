@@ -1,0 +1,13 @@
+.schedule-item {
+  @include vertical-center;
+  height: 60px;
+  width: 380px;
+  margin: 10px 0;
+  &-hour {
+    background-color: rgb(255, 255, 255);
+  }
+  &-content {
+    @include space-between;
+    flex: 1;
+  }
+}
