@@ -9,6 +9,8 @@ const App = () => {
   const { user } = useAuth();
   const routing = useRoutes(routes(user));
 
+  console.log("lsakdflskadfdsakafsd")
+
   return (
     <>
       {user && <Dashboard />}
